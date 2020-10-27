@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AzureDataTest</string>
+    <string name="cosmosdb_fetch_data">CosmosDB Fetch Data</string>
+</resources>

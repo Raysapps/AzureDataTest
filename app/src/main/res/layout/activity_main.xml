@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="com.temp.azuredatatest.MainViewModel" />
+        <variable
+            name="viewmodel"
+            type="com.temp.azuredatatest.MainViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/cosmos_db_call_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/colorPrimary"
+            android:text="@{viewmodel.cosmosCallStatus}"
+            app:layout_constraintTop_toTopOf="@id/cosmos_db_flow"
+            app:layout_constraintBottom_toBottomOf="@id/cosmos_db_flow"/>
+        <TextView
+            android:id="@+id/cosmos_db_error_cause"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/colorError"
+            android:text="@{viewmodel.cosmosCause}"
+            app:layout_constraintTop_toTopOf="@id/cosmos_db_flow"
+            app:layout_constraintBottom_toBottomOf="@id/cosmos_db_flow"/>
+        <TextView
+            android:id="@+id/cosmos_db_data_text"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:textColor="?attr/colorSecondary"
+            android:text="@{viewmodel.fetchData}"
+            app:layout_constraintTop_toTopOf="@id/cosmos_db_flow"
+            app:layout_constraintBottom_toBottomOf="@id/cosmos_db_flow"/>
+
+        <Button
+            android:id="@+id/cosmosdb_fetch_data"
+            android:text="@string/cosmosdb_fetch_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->viewmodel.fetch()}"
+            app:layout_constraintTop_toTopOf="@id/cosmos_db_flow"
+            app:layout_constraintBottom_toBottomOf="@id/cosmos_db_flow"
+            />
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/cosmos_db_flow"
+            android:orientation="vertical"
+            app:constraint_referenced_ids=
+                "cosmos_db_call_status,
+            cosmos_db_error_cause,
+            cosmos_db_data_text,
+            cosmosdb_fetch_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
